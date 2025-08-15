@@ -2,6 +2,24 @@ import java.io.FileReader;
 import java.util.HashMap;
 
 public class App {
+
+    private float calcularPromedio(int mat[][]) {
+        float sumaTotal = 0; // 1
+        int length = mat.length; // 1
+        for(int i = 0; i < length; i++) {  // 1 + (n+1) + n
+            for(int j = 0; j < mat[i].length; j++) { // n (1 + 3 (n+1) + n)
+                sumaTotal += mat[i][j]; // n (2n)
+            }
+        }
+        float promedio = sumaTotal / (mat.length*mat[0].length); // 6
+        return promedio; // 1
+    } // f(n) = 
+
+
+
+
+
+
     boolean todosPares(int[] arr) {
         boolean rta = true; // 1
         int aux = arr.length; // 1
