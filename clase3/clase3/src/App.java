@@ -9,7 +9,31 @@ public class App {
         System.out.println(todasLasColumnasAlMenosUnDivisiblePor(matriz2,5)); //  false
     }
 
+ private static boolean revisarColumna(int[][] matriz, int elemento, int columnaActual) {
+        if (columnaActual >= matriz[0].length) {
+            return true;
+        }
 
+        boolean columnaHit = buscarDivisibleEnFila(matriz, elemento, columnaActual, 0);
+
+        if (columnaHit) {
+            return revisarColumna(matriz, elemento, columnaActual + 1);
+        } else {
+            return false;
+        }
+    } // metodo sustraccion, a= 1 b= 1  k=1  => O(n^(1+1))  =>  O(n^2)
+
+    private static boolean buscarDivisibleEnFila(int[][] matriz, int elemento, int columna, int filaActual) {
+        if (filaActual >= matriz.length) {
+            return false;
+        }
+
+        if (matriz[filaActual][columna] % elemento == 0) {
+            return true;
+        }
+
+        return buscarDivisibleEnFila(matriz, elemento, columna, filaActual + 1);
+    } // metodo sustraccion  a = 1  b=1  k= 0  => O(n^(0+1))  =>  O(n)
 
     private static boolean todasLasColumnasAlMenosUnDivisiblePor(int[][] matriz, int elemento) {
         boolean rta = true; // 1
